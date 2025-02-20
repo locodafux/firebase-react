@@ -22,14 +22,21 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const params = { email, password };
+    try {
+      const response = await axios.post('',params);
+      console.log(response.data.message)
+    } catch (error) {
+      console.log(error.message)
+    } 
 
-    const userData = {
-      name: "leo",
-      role: "user", 
-    };
+    // const userData = 
+    //   name: "leo",
+    //   role: "user", 
+    // };
 
-    login(userData); // Save user in context
-    navigate(userData.role === "admin" ? "/admin" : "/home");
+    // login(userData); // Save user in context
+    // navigate(userData.role === "admin" ? "/admin" : "/home");
   };
 
   return (

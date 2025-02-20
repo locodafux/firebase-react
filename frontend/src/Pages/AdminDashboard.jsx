@@ -10,7 +10,7 @@ const AdminDashboard = () => {
     },[]);
     const handleLogout = () => {
         logout();
-        navigate(user.role !== "admin" ?? "/unauthorized")
+        navigate(user.role !== "admin" ? "/unauthorized" : null)
     }
 
     return (
