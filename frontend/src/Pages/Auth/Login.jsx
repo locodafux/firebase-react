@@ -13,7 +13,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // ✅ Redirect logged-in users to their respective pages
   useEffect(() => {
     if (user) {
       console.log(user)
@@ -24,10 +23,9 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Simulating a user login
     const userData = {
       name: "leo",
-      role: "admin", // Change to "user" for testing
+      role: "user", 
     };
 
     login(userData); // Save user in context

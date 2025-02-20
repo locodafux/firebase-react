@@ -5,6 +5,7 @@ import Login from './Pages/Auth/Login';
 import Home from './Pages/Home';
 import AdminDashboard from "./Pages/AdminDashboard";
 import Unauthorized from "./Pages/Unauthorized";
+import Register from "./Pages/Auth/Register";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Login />} />
+          <Route path="/" element={<Register />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* Protected Routes */}
