@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "./components/Input";
-import InputLabel from "./components/InputLabel"; 
-import { PrimaryButton }  from "./components/Button";
+import Input from "../../components/Input";
+import InputLabel from "../../components/InputLabel"; 
+import { PrimaryButton }  from "../../components/Button";
 
 function Login() {
   function handleLogin() {

@@ -8,4 +8,4 @@ const PrimaryButton = ({text}) => {
     )
 }
 
-export {PrimaryButton}
+export { PrimaryButton }
