@@ -4,9 +4,9 @@ import jwt from "jsonwebtoken";
 import cors from "cors";
 import dotenv from "dotenv";
 import serviceAccount from "./firebaseServiceAccountKey.json" assert { type: "json" };
+import authenticateToken from "./middleware/authenticateToken";
 
 dotenv.config();
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -16,7 +16,6 @@ admin.initializeApp({
 });
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
-
 const verifyFirebaseToken = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ error: "Unauthorized" });
@@ -28,17 +27,6 @@ const verifyFirebaseToken = async (req, res, next) => {
   } catch (error) {
     return res.status(403).json({ error: "Invalid Token" });
   }
-};
-
-const authenticateToken = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
-  if (!token) return res.status(401).json({ error: "Unauthorized" });
-
-  jwt.verify(token, JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: "Invalid Token" });
-    req.user = user;
-    next();
-  });
 };
 
 app.post("/generate-jwt", async (req, res) => {
