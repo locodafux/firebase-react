@@ -26,7 +26,7 @@ function Login() {
     console.log(server)
     const params = { email, password };
     try {
-      const response = await axios.post(`${server}/api/user/login`,params);
+      const response = await axios.post(`${server}/api/login`,params);
       console.log(response.data.message)
     } catch (error) {
       console.log(error.message)

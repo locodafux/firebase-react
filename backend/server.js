@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import serviceAccount from "./firebaseServiceAccountKey.json" assert { type: "json" };
 import { authenticateToken } from "./middleware/authenticateToken.js"
+import authRoute from "./routers/AuthRoute.js"
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,9 @@ const verifyFirebaseToken = async (req, res, next) => {
   }
 };
 
+
+app.use('/api',authRoute)
+
 app.post("/generate-jwt", async (req, res) => {
   const { firebaseToken } = req.body;
 
@@ -47,9 +51,9 @@ app.post("/generate-jwt", async (req, res) => {
   }
 });
 
-app.get("/protected", authenticateToken, (req, res) => {
-  res.json({ message: "Access granted", user: req.user });
-});
+// app.get("/protected", authenticateToken, (req, res) => {
+//   res.json({ message: "Access granted", user: req.user });
+// });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
