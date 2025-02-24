@@ -5,6 +5,7 @@ import Input from "../../components/Input";
 import InputLabel from "../../components/InputLabel";
 import { PrimaryButton } from "../../components/Button";
 import Header from "../../components/Header";
+import { server } from "../../context/ServerContext";
 import axios from "axios";
 
 function Login() {
@@ -22,9 +23,10 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(server)
     const params = { email, password };
     try {
-      const response = await axios.post('',params);
+      const response = await axios.post(`${server}/api/user/login`,params);
       console.log(response.data.message)
     } catch (error) {
       console.log(error.message)
