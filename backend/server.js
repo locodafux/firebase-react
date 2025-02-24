@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import cors from "cors";
 import dotenv from "dotenv";
 import serviceAccount from "./firebaseServiceAccountKey.json" assert { type: "json" };
-import authenticateToken from "./middleware/authenticateToken";
+import { authenticateToken } from "./middleware/authenticateToken.js"
 
 dotenv.config();
 const app = express();
